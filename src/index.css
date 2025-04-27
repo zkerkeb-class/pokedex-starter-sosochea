@@ -1,68 +1,251 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+/* Conteneur des cartes */
+.pokemon-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-wrap: wrap;
+  justify-content: center; /* Centre les cartes */
+  gap: 20px; /* Ajoute un espace entre les cartes */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Ajustement des cartes avec un thème rose */
+.pokemon-card {
+  flex: 1 1 calc(20% - 20px); /* Ajustement pour 4 cartes par ligne */
+  max-width: 230px; /* Taille maximale réduite */
+  width: 200px; /* Largeur réduite */
+  height: 358px; /* Hauteur maintenue */
+  background: linear-gradient(to bottom, #ffb6c1, #ff69b4); /* Dégradé de rose */
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 3px solid #d14785; /* Bordure rose foncé */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* Zone blanche pour l'image */
+.pokemon-image-container {
+  width: 90%;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #ff66b2; /* Bordure rose clair */
+}
+
+.pokemon-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* Nom et Type */
+.pokemon-info {
+  color: white;
+  font-weight: bold;
+}
+
+.pokemon-name {
+  font-size: 1.3rem;
+  margin: 5px 0;
+}
+
+.pokemon-type {
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.5); /* Fond blanc semi-transparent */
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #ff3385; /* Couleur du texte rose vif */
+}
+
+/* Stats */
+.pokemon-stats {
+  width: 90%;
+  background: rgba(255, 205, 255, 0.3);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  text-align: left;
+  margin-bottom: 10px; /* Ajoute un espace avant le bouton d'attaque */
+}
+
+.pokemon-stats p {
+  margin: 4px 0;
+}
+
+/* Bouton VOir */
+.attack-button {
+  width: 50%;
+  padding: 8px 15px;
+  background-color: white; /* Jaune pour contraster */
+  color: #ff3385; /* Texte noir pour un bon contraste */
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-weight: bold;
+  margin-top: auto; /* Ajustement pour bien positionner */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.attack-button:hover {
+  background-color: #e86ca5; /* Jaune plus foncé au survol */
 }
+
+/* Style pour la barre de recherche */
+.search-bar {
+  width: 50%; /* Ajuste la largeur */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff66b2; /* Bordure rose */
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-bar:focus {
+  border-color: #cc0066;
+}
+
+/* Titre */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-select {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ff66b2;
+  border-radius: 5px;
+  outline: none;
+  width: 200px;
+  background-color: white;
+  color: #cc0066;
+  margin-left: 10px;
+}
+
+.filter-select:focus {
+  border-color: #cc0066;
+}
+
+/* Lien autour d'une carte Pokémon */
+.pokemon-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+
+.pokemon-link:visited {
+  color: inherit;
+}
+
+.edit-card {
+  height: 460px;                 /*  +110 px pour caser les inputs  */
+}
+
+.edit-card .pokemon-image-container {
+  margin-bottom: 6px;
+}
+
+.edit-card .url-input {
+  width: 90%;
+  margin-top: 4px;
+  padding: 6px;
+  font-size: .8rem;
+  border: 2px solid #ff66b2;
+  border-radius: 5px;
+}
+
+.save-btn {
+  margin-top: 18px;
+  width: 140px;
+  background: #e64786;           /* rose fixe */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+.save-btn:hover { background:#cf3c75; }
+
+/* Centrage global de la carte d'édition */
+.edit-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;   /* carte un peu plus haut que le milieu */
+  min-height: 80vh;
+}
+
+/* largeur / hauteur un peu plus confortables */
+.edit-card {
+  width: 240px;          /* 👈 un peu plus large que 200px */
+  height: 560px;
+  justify-content: flex-start;
+}
+
+/* input URL sous l'image */
+.url-input {
+  width: 90%;
+  margin-top: 6px;
+  padding: 6px;
+  font-size: 0.8rem;
+  border: 2px solid #ff66b2;
+  border-radius: 5px;
+}
+
+/* ligne "ajouter un type" */
+.add-type-row {
+  width: 90%;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.add-type-input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* petite puce type */
+.type-chip {
+  display: inline-block;
+  background: #ff66b2;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  padding: 3px 6px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+/* stats dans la carte */
+.stat-row {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+.stat-row input {
+  width: 70px;
+  margin-left: auto;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+/* bouton rose réutilisable */
+.save-btn {
+  background: #e64786;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.save-btn:hover { background:#cf3c75; }
+.save-btn.main { width: 90%; padding: 10px 0; margin-top: 12px; }
+.save-btn.mini { padding: 0 10px; }
+
